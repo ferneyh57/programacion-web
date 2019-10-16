@@ -109,7 +109,8 @@
             <li><a class="treeview-item" href="tabla_vend_creados.php"><i class="icon fa fa-circle-o"></i> Tabla vend. creados</a></li>
           </ul>
         </li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Creditos Estu</span></a></li>
+        <li><a class="app-menu__item" href="crear_credito.php"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Crear Credito</span></a></li>
+        <li><a class="app-menu__item" href="tabla_creditos.php"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Creditos Estu</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Programas</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="programa.html"><i class="icon fa fa-circle-o"></i> Crear Programas</a></li>

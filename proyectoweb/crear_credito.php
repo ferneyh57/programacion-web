@@ -6,9 +6,7 @@
    
   $mysql->conectar();
 
-  $tipodocumento= $mysql->efectuarConsulta("SELECT tiendacotecnova.tipo_documento.tipo_documento_id, tiendacotecnova.tipo_documento.tipo_documento_nombre from tiendacotecnova.tipo_documento");
-  $estadocivil= $mysql->efectuarConsulta("SELECT tiendacotecnova.estado_civil.estado_civil_id, tiendacotecnova.estado_civil.estado_civil_nombre	 from tiendacotecnova.estado_civil");
-  $programa= $mysql->efectuarConsulta("SELECT tiendacotecnova.programa.programa_id, tiendacotecnova.programa.programa_nombre	 from tiendacotecnova.programa");
+  $estudiantes= $mysql->efectuarConsulta("SELECT tiendacotecnova.estudiantes.est_doc_iden, tiendacotecnova.estudiantes.est_nombres from tiendacotecnova.estudiantes");
   ?>
 
 <head>
@@ -157,12 +155,12 @@
   <main class="app-content">
     <div class="app-title">
       <div>
-        <h1><i class="fa fa-edit"></i> Crear Estudiantes para credito</h1>
+        <h1><i class="fa fa-edit"></i> Crear Credito</h1>
         <p>Bienvenidos, Por favor diligencie la Informacion</p>
       </div>
       <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item">estudiantes</li>
+        <li class="breadcrumb-item">Estudiantes</li>
         <li class="breadcrumb-item"><a href="#">Crear estudiantes</a></li>
       </ul>
     </div>
@@ -170,14 +168,14 @@
       <div class="col-md-12">
         <div class="tile">
           <div class="row">
-            <div class="col-lg-6">
-              <form method="POST" action="crearestudiante.php">
+            <div class="col-lg-12">
+              <form method="POST" action="crea_creditos.php">
 
                 <div class="form-group">
-                  <label class="col-form-label"> Tipodocumento</label>
-                  <select name="tipodocumento" class="form-control" >
-                    <?php while ($resultado=mysqli_fetch_assoc($tipodocumento)){?> 
-                    <option value="<?php echo $resultado['tipo_documento_id'] ?>"><?php echo $resultado['tipo_documento_nombre'] ?></option>
+                  <label class="col-form-label">Estudiante</label>
+                  <select name="estudiantes" class="form-control" >
+                    <?php while ($resultado=mysqli_fetch_assoc($estudiantes)){?> 
+                    <option value="<?php echo $resultado['est_doc_iden'] ?>"><?php echo $resultado['est_nombres'] ?></option>
                     <?php
                     }
                     ?>
@@ -185,49 +183,11 @@
 
                 </div>
 
-                <div class="form-group">
-                  <label class="col-form-label">Numero de identificacion</label>
-                  <input class="form-control" name="2" type="text">
+                  <label class="col-form-label">Credito</label>
+                  <input class="form-control" name="credito" type="text">
                 </div>
-
-                <div class="form-group">
-                  <label class="col-form-label">Nombres</label>
-                  <input class="form-control" name="3" type="text">
-                </div>
-
-                <div class="form-group">
-                  <label class="col-form-label">Apellidos</label>
-                  <input class="form-control" name="4" type="text">
-                </div>
-             
-            
-                <div class="form-group">
-                  <label class="col-form-label">Estado Civil</label>
-                  <select name="estadocivil" class="form-control" >
-                    <?php while ($resultado=mysqli_fetch_assoc($estadocivil)){?> 
-                    <option value="<?php echo $resultado['estado_civil_id'] ?>"><?php echo $resultado['estado_civil_nombre'] ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
-                </div>
-            
-                <div class="form-group">
-                  <label class="col-form-label">Programa</label>
-                  <select name="programa" class="form-control" >
-                    <?php while ($resultado=mysqli_fetch_assoc($programa)){?> 
-                    <option value="<?php echo $resultado['programa_id'] ?>"><?php echo $resultado['programa_nombre'] ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
-                </div>
-                
-                <div class="form-group">
-                  <label class="col-form-label">Clave</label>
-                  <input class="form-control" placeholder="Ingrese su contrasenha" name="8" type="password">
-                </div>
-                <div class="tile-footer">
+                 
+          
                   <input type="submit" value="enviar" name="enviar">
                 </div>
               </form>

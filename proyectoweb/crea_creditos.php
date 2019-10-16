@@ -4,11 +4,30 @@
   require_once 'MySQL.php';
   $mysql = new MySQL;
    
-  $mysql->conectar();
+$mysql->conectar();
+    
+ 
+    $numeroDocumento= $_POST['estudiantes'];
+    $credito = $_POST['credito'];
+  
+    $consulta = $mysql ->efectuarConsulta("SELECT tiendacotecnova.estudiantes.est_total_credito from tiendacotecnova.estudiantes WHERE tiendacotecnova.estudiantes.est_doc_iden=".$numeroDocumento."");
 
-  $tipodocumento= $mysql->efectuarConsulta("SELECT tiendacotecnova.tipo_documento.tipo_documento_id, tiendacotecnova.tipo_documento.tipo_documento_nombre from tiendacotecnova.tipo_documento");
-  $estadocivil= $mysql->efectuarConsulta("SELECT tiendacotecnova.estado_civil.estado_civil_id, tiendacotecnova.estado_civil.estado_civil_nombre	 from tiendacotecnova.estado_civil");
-  $programa= $mysql->efectuarConsulta("SELECT tiendacotecnova.programa.programa_id, tiendacotecnova.programa.programa_nombre	 from tiendacotecnova.programa");
+    
+    while ($resultado=mysqli_fetch_assoc($consulta)) {
+
+  $creditoactual=  $resultado['est_total_credito'];
+    
+}
+
+    $sumacredito = $credito + $creditoactual;
+
+   
+    
+    
+   
+    $insertar= $mysql->efectuarConsulta("update  tiendacotecnova.estudiantes set
+      est_total_credito='" .$sumacredito. "' where est_doc_iden=".$numeroDocumento."
+    ");
   ?>
 
 <head>
@@ -157,12 +176,12 @@
   <main class="app-content">
     <div class="app-title">
       <div>
-        <h1><i class="fa fa-edit"></i> Crear Estudiantes para credito</h1>
+        <h1><i class="fa fa-edit"></i> Crear Credito</h1>
         <p>Bienvenidos, Por favor diligencie la Informacion</p>
       </div>
       <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item">estudiantes</li>
+        <li class="breadcrumb-item">Estudiantes</li>
         <li class="breadcrumb-item"><a href="#">Crear estudiantes</a></li>
       </ul>
     </div>
@@ -170,101 +189,30 @@
       <div class="col-md-12">
         <div class="tile">
           <div class="row">
-            <div class="col-lg-6">
-              <form method="POST" action="crearestudiante.php">
+            <div class="col-lg-12">
+              <form method="POST" action="crea_creditos.php">
 
                 <div class="form-group">
-                  <label class="col-form-label"> Tipodocumento</label>
-                  <select name="tipodocumento" class="form-control" >
-                    <?php while ($resultado=mysqli_fetch_assoc($tipodocumento)){?> 
-                    <option value="<?php echo $resultado['tipo_documento_id'] ?>"><?php echo $resultado['tipo_documento_nombre'] ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
+                  <label class="col-form-label">Estudiante</label>
+                 
+<?php
 
-                </div>
-
-                <div class="form-group">
-                  <label class="col-form-label">Numero de identificacion</label>
-                  <input class="form-control" name="2" type="text">
-                </div>
-
-                <div class="form-group">
-                  <label class="col-form-label">Nombres</label>
-                  <input class="form-control" name="3" type="text">
-                </div>
-
-                <div class="form-group">
-                  <label class="col-form-label">Apellidos</label>
-                  <input class="form-control" name="4" type="text">
-                </div>
-             
-            
-                <div class="form-group">
-                  <label class="col-form-label">Estado Civil</label>
-                  <select name="estadocivil" class="form-control" >
-                    <?php while ($resultado=mysqli_fetch_assoc($estadocivil)){?> 
-                    <option value="<?php echo $resultado['estado_civil_id'] ?>"><?php echo $resultado['estado_civil_nombre'] ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
-                </div>
-            
-                <div class="form-group">
-                  <label class="col-form-label">Programa</label>
-                  <select name="programa" class="form-control" >
-                    <?php while ($resultado=mysqli_fetch_assoc($programa)){?> 
-                    <option value="<?php echo $resultado['programa_id'] ?>"><?php echo $resultado['programa_nombre'] ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
-                </div>
-                
-                <div class="form-group">
-                  <label class="col-form-label">Clave</label>
-                  <input class="form-control" placeholder="Ingrese su contrasenha" name="8" type="password">
-                </div>
-                <div class="tile-footer">
-                  <input type="submit" value="enviar" name="enviar">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        
+                  
  
-        </div>
-      </div>
-    </div>
-  </main>
-  <!-- Essential javascripts for application to work-->
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-  <!-- The javascript plugin to display page loading on top-->
-  <script src="js/plugins/pace.min.js"></script>
-  <!-- Page specific javascripts-->
-  <!-- Google analytics script-->
-  <script type="text/javascript">
-    if (document.location.hostname == 'pratikborsadiya.in') {
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-      ga('create', 'UA-72504830-1', 'auto');
-      ga('send', 'pageview');
-    }
-  </script>
-</body>
 
-</html>
+  
+if($insertar==true){
+    echo "registro actualizado";
+    ?>
+                 <meta http-equiv="refresh" content="2; url=index.html">
+  
+                  <?php
+// header("Location: index.html");
+ } 
+ else
+  {
+    header("Location: formulario_actualizar.php");
+ }
+ 
+ ?>
