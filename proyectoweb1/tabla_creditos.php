@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
   <head>
     <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
     <!-- Twitter meta-->
@@ -13,7 +15,7 @@
     <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
     <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <title>Administrador</title>
+    <title>Data Table - Vali Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,7 +80,7 @@
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="cerrar.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -87,12 +89,13 @@
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
       <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+        
         <div>
           <p class="app-sidebar__user-name">Sergio Arias</p>
           <p class="app-sidebar__user-designation">Administrador</p>
         </div>
       </div>
-      <ul class="app-menu">
+     <ul class="app-menu">
         <li><a class="app-menu__item" href="index.html"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">inicio</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Estudiantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
@@ -107,7 +110,7 @@
           </ul>
         </li>
         <li><a class="app-menu__item" href="crear_credito.php"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Crear Credito</span></a></li>
-        <li><a class="app-menu__item" href="tabla_creditos.php"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Creditos Estu</span></a></li>
+        <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Creditos Estu</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Programas</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="programa.html"><i class="icon fa fa-circle-o"></i> Crear Programas</a></li>
@@ -119,42 +122,67 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Bienvenido Administrador </h1>
+          <h1><i class="fa fa-th-list"></i> Creditos Estudiantes</h1>
         </div>
-        <ul class="app-breadcrumb breadcrumb">
+        <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="#">Estudiante</a></li>
+          <li class="breadcrumb-item">Creditos</li>
+          <li class="breadcrumb-item active"><a href="#">tabla Creditos</a></li>
         </ul>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="tile">
-            <h3 class="tile-title">Features</h3>
-            <ul>
-              <li>Built with Bootstrap 4, SASS and PUG.js</li>
-              <li>Fully responsive and modular code</li>
-              <li>Seven pages including login, user profile and print friendly invoice page</li>
-              <li>Smart integration of forgot password on login page</li>
-              <li>Chart.js integration to display responsive charts</li>
-              <li>Widgets to effectively display statistics</li>
-              <li>Data tables with sort, search and paginate functionality</li>
-              <li>Custom form elements like toggle buttons, auto-complete, tags and date-picker</li>
-              <li>A inbuilt toast library for providing meaningful response messages to user's actions</li>
-            </ul>
-            <p>Vali is a free and responsive admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.</p>
-            <p>Vali is is light-weight, expendable and good looking theme. The theme has all the features required in a dashboard theme but this features are built like plug and play module. Take a look at the <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a> about customizing the theme colors and functionality.</p>
-            <p class="mt-4 mb-4"><a class="btn btn-primary mr-2 mb-2" href="http://pratikborsadiya.in/blog/vali-admin" target="_blank"><i class="fa fa-file"></i>Docs</a><a class="btn btn-info mr-2 mb-2" href="https://github.com/pratikborsadiya/vali-admin" target="_blank"><i class="fa fa-github"></i>GitHub</a><a class="btn btn-success mr-2 mb-2" href="https://github.com/pratikborsadiya/vali-admin/archive/master.zip" target="_blank"><i class="fa fa-download"></i>Download</a></p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Compatibility with frameworks</h3>
-            <p>This theme is not built for a specific framework or technology like Angular or React etc. But due to it's modular nature it's very easy to incorporate it into any front-end or back-end framework like Angular, React or Laravel.</p>
-            <p>Go to <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a> for more details about integrating this theme with various frameworks.</p>
-            <p>The source code is available on GitHub. If anything is missing or weird please report it as an issue on <a href="https://github.com/pratikborsadiya/vali-admin" target="_blank">GitHub</a>. If you want to contribute to this theme pull requests are always welcome.</p>
+            <div class="tile-body">
+              <table class="table table-hover table-bordered" id="sampleTable">
+                <?php
+                    require_once 'MySQL.php';
+
+                    $mysql = new MySQL;
+                 
+                    $mysql->conectar();
+
+                    $consulta = $mysql ->efectuarConsulta("select tiendacotecnova.creditos.cre_fecha_hora_act,  tiendacotecnova.creditos.cre_est_doc_iden,  tiendacotecnova.creditos.cre_est_total_credito,  tiendacotecnova.creditos.cre_ven_doc_iden from tiendacotecnova.creditos");
+                ?>
+                  <thead>
+                    <tr>
+                      <th scope="col">Fecha - Hora - Creditos</th>
+                      <th scope="col">Documento Estudiante</th>
+                      <th scope="col">Total creditos</th>
+                      <th scope="col">Documento Vendedor</th>
+                    </tr>
+                  </thead>
+                  <?php
+                    while ($resultado=mysqli_fetch_assoc($consulta)) {
+                      
+                  ?>
+                  <tbody>
+                      <tr>
+                          <td><?php echo $resultado['cre_fecha_hora_act']?></td>
+                          <td><?php echo $resultado['cre_est_doc_iden']?></td>
+                          <td><?php echo $resultado['cre_est_total_credito']?></td>
+                          <td><?php echo $resultado['cre_ven_doc_iden']?></td>
+
+                      </tr>
+                  </tbody>
+                <?php
+                }
+                ?>
+              </table>
+            </div>
           </div>
         </div>
       </div>
+        
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+              
+              <input type="button" onclick="history.back()" name="paginanterior" value="Pagina Anterior">
+              <a href="index.html">Ir al inicio</a>
+          </div>
+        </div>
+      </div>    
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -164,54 +192,10 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
-    <script type="text/javascript" src="js/plugins/chart.js"></script>
-    <script type="text/javascript">
-      var data = {
-      	labels: ["January", "February", "March", "April", "May"],
-      	datasets: [
-      		{
-      			label: "My First dataset",
-      			fillColor: "rgba(220,220,220,0.2)",
-      			strokeColor: "rgba(220,220,220,1)",
-      			pointColor: "rgba(220,220,220,1)",
-      			pointStrokeColor: "#fff",
-      			pointHighlightFill: "#fff",
-      			pointHighlightStroke: "rgba(220,220,220,1)",
-      			data: [65, 59, 80, 81, 56]
-      		},
-      		{
-      			label: "My Second dataset",
-      			fillColor: "rgba(151,187,205,0.2)",
-      			strokeColor: "rgba(151,187,205,1)",
-      			pointColor: "rgba(151,187,205,1)",
-      			pointStrokeColor: "#fff",
-      			pointHighlightFill: "#fff",
-      			pointHighlightStroke: "rgba(151,187,205,1)",
-      			data: [28, 48, 40, 19, 86]
-      		}
-      	]
-      };
-      var pdata = [
-      	{
-      		value: 300,
-      		color: "#46BFBD",
-      		highlight: "#5AD3D1",
-      		label: "Complete"
-      	},
-      	{
-      		value: 50,
-      		color:"#F7464A",
-      		highlight: "#FF5A5E",
-      		label: "In-Progress"
-      	}
-      ]
-      
-      var ctxl = $("#lineChartDemo").get(0).getContext("2d");
-      var lineChart = new Chart(ctxl).Line(data);
-      
-      var ctxp = $("#pieChartDemo").get(0).getContext("2d");
-      var pieChart = new Chart(ctxp).Pie(pdata);
-    </script>
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {

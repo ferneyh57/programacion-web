@@ -6,9 +6,7 @@
    
   $mysql->conectar();
 
-  $tipodocumento= $mysql->efectuarConsulta("SELECT tiendacotecnova.tipo_documento.tipo_documento_id, tiendacotecnova.tipo_documento.tipo_documento_nombre from tiendacotecnova.tipo_documento");
   $estadocivil= $mysql->efectuarConsulta("SELECT tiendacotecnova.estado_civil.estado_civil_id, tiendacotecnova.estado_civil.estado_civil_nombre	 from tiendacotecnova.estado_civil");
-  $programa= $mysql->efectuarConsulta("SELECT tiendacotecnova.programa.programa_id, tiendacotecnova.programa.programa_nombre	 from tiendacotecnova.programa");
   ?>
 
 <head>
@@ -156,13 +154,13 @@
   <main class="app-content">
     <div class="app-title">
       <div>
-        <h1><i class="fa fa-edit"></i> Actualizar Estudiantes para credito</h1>
+        <h1><i class="fa fa-edit"></i> Actualizar vendedores</h1>
         <p>Bienvenidos, Por favor diligencie la Informacion</p>
       </div>
       <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item">estudiantes</li>
-        <li class="breadcrumb-item"><a href="#">Actualizar estudiantes</a></li>
+        <li class="breadcrumb-item">vendedores</li>
+        <li class="breadcrumb-item"><a href="#">Actualizar vendedores</a></li>
       </ul>
     </div>
     <div class="row">
@@ -178,37 +176,26 @@
                 $mysql->conectar();
                 $id=$_GET['id'];
            
-                $consulta = $mysql ->efectuarConsulta("select tiendacotecnova.estudiantes.est_nombres,
-                tiendacotecnova.estudiantes.est_apellidos,
-                tiendacotecnova.estudiantes.est_total_credito,
-                tiendacotecnova.programa.programa_id,
-                tiendacotecnova.programa.programa_nombre, 
+                $consulta = $mysql ->efectuarConsulta("select tiendacotecnova.vendedores.ven_nombres,
+                tiendacotecnova.vendedores.ven_apellidos, 
                 tiendacotecnova.estado_civil.estado_civil_nombre,
                 tiendacotecnova.estado_civil.estado_civil_id 
-                from tiendacotecnova.estudiantes inner join tiendacotecnova.estado_civil 
-                on tiendacotecnova.estudiantes.estado_civil_id = tiendacotecnova.estado_civil.estado_civil_id
-                inner join tiendacotecnova.programa 
-                on tiendacotecnova.estudiantes.programa_id = tiendacotecnova.programa.programa_id
-                where est_id =".$id."");
-                echo "$id";
+                from tiendacotecnova.vendedores inner join tiendacotecnova.estado_civil 
+                on tiendacotecnova.vendedores.estado_civil_id = tiendacotecnova.estado_civil.estado_civil_id
+                
+                where ven_id =".$id."");
                 while ($resultado=mysqli_fetch_assoc($consulta)) {
-                  $nombre = $resultado['est_nombres'];
-                  $apellido = $resultado['est_apellidos'];
-                  $credito = $resultado['est_total_credito'];
+                  $nombre = $resultado['ven_nombres'];
+                  $apellido = $resultado['ven_apellidos'];
                   $estadocivil = $resultado['estado_civil_id'];
                   $estadoNombre = $resultado['estado_civil_nombre'];
-                  $programa = $resultado['programa_id'];
-                  $programanombre = $resultado['programa_nombre'];
                 }
-              
-                $selectestado = $mysql -> efectuarConsulta("select tiendacotecnova.estado_civil.estado_civil_nombre, tiendacotecnova.estado_civil.estado_civil_id from tiendacotecnova.estado_civil");
-
-                
-                $selectprograma = $mysql -> efectuarConsulta("select tiendacotecnova.programa.programa_nombre from tiendacotecnova.programa");
+                $selectestado = $mysql -> efectuarConsulta("select tiendacotecnova.estado_civil.estado_civil_id from tiendacotecnova.estado_civil");
+                $selectestado = $mysql -> efectuarConsulta("select tiendacotecnova.estado_civil.estado_civil_id from tiendacotecnova.estado_civil");
                  
                  
               ?>
-              <form method="POST" action="actualizar_estudiante.php?id=<?php echo $id; ?>">
+              <form method="POST" action="vali_actualizar_vendedor.php">
   
                 <div class="form-group">
                   <label class="col-form-label">Nombres</label>
@@ -226,8 +213,7 @@
                   <select name="estadocivil" required class="form-control" >
                     <option value="<?php echo $estadocivil; ?>"><?php echo $estadoNombre; ?></option>
                     <option disable>Seleccione un nuevo estado civil</option>
-                    <?php while ($resultado=mysqli_fetch_assoc($selectestado)){
-                    ?> 
+                    <?php while ($resultado=mysqli_fetch_assoc($selectestado)){?> 
                     <option value="<?php echo $resultado['estado_civil_id'] ?>"><?php echo $resultado['estado_civil_nombre'] ?></option>
                     
                     <?php
@@ -236,29 +222,13 @@
                   </select>
                 </div>
             
- 
 
-                <div class="form-group">
-                  <label class="col-form-label">Credito</label>
-                  <input class="form-control"  required value="<?php echo $credito;?>" required  placeholder="Ingrese el tope del credito" name="credito" type="text">
-                </div>
-
-                <div class="form-group">
-                  <label class="col-form-label">Programa</label>
-                  <select name="programa" required class="form-control" >
-                    <option value="<?php echo $programa; ?>"><?php echo $programanombre; ?></option>
-                    <option disable>Seleccione un Programa</option>
-                    <?php while ($resultado=mysqli_fetch_assoc($selectprograma)){?> 
-                    <option value="<?php echo $resultado['programa_id'] ?>"><?php echo $resultado['programa_nombre'] ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
-                </div>
               <div class="tile-footer">
                   <input type="submit" value="enviar" name="enviar">
                 </div>
-                
+                <?php
+               
+                ?>
               </form>
             </div>
           </div>

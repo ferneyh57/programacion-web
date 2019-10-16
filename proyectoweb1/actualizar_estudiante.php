@@ -1,7 +1,6 @@
 <?php
 //condicion para comprobar si los campos están declarados anteriormente y si no estan vacíos
-if(isset($_POST['enviar']) && !empty($_POST['nombre']) &&!empty($_POST['apellido']) && !empty($_POST['estadocivil']) && !empty($_POST['credito']) 
-        && !empty($_POST['programa']) && !empty($_POST['clave'])){
+if(isset($_POST['enviar']) && !empty($_POST['nombre']) &&!empty($_POST['apellido']) && !empty($_POST['estadocivil']) && !empty($_POST['credito']) && !empty($_POST['programa'])){
     
     require_once 'MySQL.php';
     
@@ -14,8 +13,7 @@ if(isset($_POST['enviar']) && !empty($_POST['nombre']) &&!empty($_POST['apellido
     $estadoc = $_POST['estadocivil'];
     $credito = $_POST['credito'];
     $programa = $_POST['programa'];
-    $contrasena = md5($_POST['clave']);
-  
+    $id = $_GET['id'];
    
 
     $mysql = new MySQL;
@@ -24,13 +22,13 @@ if(isset($_POST['enviar']) && !empty($_POST['nombre']) &&!empty($_POST['apellido
     
    
     $insertar= $mysql->efectuarConsulta("update  tiendacotecnova.estudiantes set
-     est_nombres='" .$nombre. "', est_apellidos='" .$apellido. "', est_total_credito='" .$credito. "', est_password='" .$contrasena. "',  programa_id='" .$programa. "', estado_civil_id='" .$estadoc. "' 
-     where est_doc_iden='" .$id. "'
+     est_nombres ='" .$nombre. "', est_apellidos ='" .$apellido. "', estado_civil_id ='" .$estadoc. "' , est_total_credito ='" .$credito. "', programa_id ='" .$programa. "' 
+     where est_id ='" .$id. "'
     ");
     
     echo "update  tiendacotecnova.estudiantes set
-    est_nombres='" .$nombre. "', est_apellidos='" .$apellido. "', est_total_credito='" .$credito. "', est_password='" .$contrasena. "',  programa_id='" .$programa. "', estado_civil_id='" .$estadoc. "' 
-    where est_doc_iden='" .$id. "'
+     est_nombres='" .$nombre. "', est_apellidos='" .$apellido. "', estado_civil_id='" .$estadoc. "' , est_total_credito='" .$credito. "', programa_id='" .$programa. "' 
+     where est_id='" .$id. "'
    ";
    
 
@@ -40,7 +38,7 @@ if($insertar==true){
  } 
  else
   {
-    header("Location: formulario_actualizar.php");
+   header("Location: formulario_actualizar.php");
  }
 }
 else{
