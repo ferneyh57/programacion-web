@@ -199,8 +199,8 @@
                   $programa = $resultado['programa_id'];
                   $programanombre = $resultado['programa_nombre'];
                 }
-                $selectestado = $mysql -> efectuarConsulta("select tiendacotecnova.estado_civil.estado_civil_id from tiendacotecnova.estado_civil");
-                $selectestado = $mysql -> efectuarConsulta("select tiendacotecnova.estado_civil.estado_civil_id from tiendacotecnova.estado_civil");
+                $selectestado = $mysql -> efectuarConsulta("select tiendacotecnova.estado_civil.estado_civil_id, tiendacotecnova.estado_civil.estado_civil_nombre from tiendacotecnova.estado_civil");
+                $selectprog = $mysql -> efectuarConsulta("select tiendacotecnova.programa.programa_id, tiendacotecnova.programa.programa_nombre from tiendacotecnova.programa");
                  
                  
               ?>
@@ -243,8 +243,8 @@
                   <select name="estadocivil" required class="form-control" >
                     <option value="<?php echo $programa; ?>"><?php echo $programanombre; ?></option>
                     <option disable>Seleccione un Programa</option>
-                    <?php while ($resultado=mysqli_fetch_assoc($selectestado)){?> 
-                    <option value="<?php echo $resultado['estado_civil_id'] ?>"><?php echo $resultado['estado_civil_nombre'] ?></option>
+                    <?php while ($resultado=mysqli_fetch_assoc($selectprog)){?> 
+                    <option value="<?php echo $resultado['programa_id'] ?>"><?php echo $resultado['programa_nombre'] ?></option>
                     <?php
                     }
                     ?>
