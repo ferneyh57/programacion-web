@@ -29,6 +29,10 @@ if(isset($_POST['enviar']) && !empty($_POST['nombre']) &&!empty($_POST['apellido
     programa_id ='" .$programa. "' 
      where est_id ='" .$id. "'
     ");
+
+
+
+    
     
     echo "update  tiendacotecnova.estudiantes set
      est_nombres='" .$nombre. "', est_apellidos='" .$apellido. "', estado_civil_id='" .$estadoc. "' , est_total_credito='" .$credito. "', programa_id='" .$programa. "' 
